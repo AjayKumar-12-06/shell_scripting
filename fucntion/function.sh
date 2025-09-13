@@ -6,7 +6,7 @@ USERID=$(id -u)
 
 #logs
 
-LOG_FOLDER="var/log/shell_script.log"
+LOG_FOLDER="/var/log/shell_script.log"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
@@ -22,7 +22,7 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-echo "code execute from the :" $TIMESTAMP &>>$LOG_FILE_NAME
+echo "code execute from the :$TIMESTAMP" &>>$LOG_FILE_NAME
 validate() {
     if [ $1 -ne 0 ]; then
         echo -e "$2 installing ---$R Failure $N"
