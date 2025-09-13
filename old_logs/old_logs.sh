@@ -9,4 +9,5 @@ echo "The old logs are: $find_old_log"
 while read -r file
 do 
     echo $file
+    rm -rf $file
 done <<< $find_old_log
