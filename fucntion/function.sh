@@ -11,6 +11,9 @@ LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
+mkdir -p $LOG_FOLDER
+
+
 # colors
 R="\e[31m"
 G="\e[32m"
@@ -39,7 +42,7 @@ dnf list installed git -y &>>$LOG_FILE_NAME
         echo -e "$Y already installed $N"
     fi
 
-dnf list installed mysl -y &>>$LOG_FILE_NAME
+dnf list installed mysql -y &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]; then
         dnf install mysql -y &>>$LOG_FILE_NAME
             validate $? "installing mysql"
