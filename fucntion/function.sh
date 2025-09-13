@@ -4,11 +4,14 @@
 
 USERID=$(id -u)
 
+#logs
+
 LOG_FOLDER="var/log/shell_script.log"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
-LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log
+LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
+# colors
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -27,7 +30,7 @@ validate() {
         echo -e "$2 installing ----$G Success $N"
     fi
 }
-
+#installing packages
 dnf list installed git -y &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]; then
         dnf install git -y &>>$LOG_FILE_NAME
