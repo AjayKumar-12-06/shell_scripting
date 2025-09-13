@@ -37,16 +37,24 @@ validate() {
 dnf list installed git -y &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]; then
         dnf install git -y &>>$LOG_FILE_NAME
-            validate $? "installing git"
+            validate $? "install git"
     else
-        echo -e "$Y already installed $N"
+        echo -e "$Y already installed git $N"
     fi
 
 dnf list installed mysql -y &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]; then
         dnf install mysql -y &>>$LOG_FILE_NAME
-            validate $? "installing mysql"
+            validate $? "install mysql"
     else
-        echo -e "$Y already installed $N"
+        echo -e "$Y already installed mysql $N"
+    fi
+
+dnf list installed gcc -y &>>$LOG_FILE_NAME
+    if [ $? -ne 0 ]; then
+        dnf install mysql -y &>>$LOG_FILE_NAME
+            validate $? "install gcc"
+    else
+        echo -e "$Y already installed gcc $N"
     fi
 
